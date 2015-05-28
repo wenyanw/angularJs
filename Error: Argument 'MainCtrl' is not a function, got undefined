@@ -1,0 +1,33 @@
+My files sytem like this:
+
+folder -share
+         -configuration
+            configurationController.js
+            configuration.app.js
+            
+After complies, I saw the error on the console as " Error: Argument 'configurationController' is not a function, got undefined"
+
+The previous   configuration.app.js is as: 
+(function () {
+    'use strict';
+
+    angular.module('app.Configuration', [
+        'ngDialog',
+        'ngRoute',
+    ]);
+
+})();
+
+After research, I found I missed the root folder share where controller is under. 
+(function () {
+    'use strict';
+
+    angular.module('app.Configuration', [
+        'ngDialog',
+        'ngRoute',
+        'app.share'
+    ]);
+
+})();
+
+After added 'app.share', the error is fixed
