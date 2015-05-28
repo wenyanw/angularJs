@@ -1,0 +1,22 @@
+Uncaught Error: [$injector:modulerr] Failed to instantiate module app.Configuration due to:
+Error: [ng:areq] Argument 'fn' is not a function, got string
+
+I had controller.js with config setting, and throwed above error.
+
+(function () {
+    'use strict';
+
+    angular
+        .module('app.Configuration')
+        .controller('configController',configController)
+       .config('configurationRouteConfig', configurationRouteConfig);
+       
+       ).....
+       
+The change acutally fixed this issue is to remove ''configurationRouteConfig'.
+
+    angular
+        .module('app.Configuration')
+        .controller('configController',configController)
+       .config(configurationRouteConfig);
+      
